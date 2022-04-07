@@ -21,9 +21,7 @@ const app = Vue.createApp({
     },
     methods:
     {
-        addQuote({ charCode }) {
-
-            if (charCode !== 13) return
+        addQuote() {
 
             this.quotes.unshift({
                 quote: this.newQuote, author: 'Gabo'
