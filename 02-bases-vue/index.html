@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue Js Intro</title>
-
+    <script src="https://unpkg.com/vue@next"></script>
 </head>
 
 <body>
@@ -12,16 +12,15 @@
     <!-- Todo lo que esta dentro de este div funciona con Vue -->
     <div id="myApp">
 
-
-        <p> {{ message }}</p>
         <blockquote> {{ quote }}</blockquote>
         <h5>{{author}}</h5>
-  
+
+        <button v-on:click="changeQuote">Change quote</button>
 
     </div>
 
 
-    <script src="https://unpkg.com/vue@next"></script>
+
     <script src="app.js"></script>
 </body>
 
