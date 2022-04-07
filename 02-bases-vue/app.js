@@ -15,7 +15,8 @@ const app = Vue.createApp({
         return {
             // si tengo el mismo nombre de variable arriba no necesito referenciar myVariableOnData: myVariable
             quotes,
-            desarrollador: developer
+            desarrollador: developer,
+            newQuote: 'Hola Ben'
         }
     },
 
