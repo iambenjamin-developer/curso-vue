@@ -16,10 +16,23 @@ const app = Vue.createApp({
             // si tengo el mismo nombre de variable arriba no necesito referenciar myVariableOnData: myVariable
             quotes,
             desarrollador: developer,
-            newQuote: 'Hola Ben'
+            newQuote: 'New Quote'
         }
     },
+    methods:
+    {
+        addQuote(event) {
+            console.log(this.newQuote)
+            console.log(event.code)
 
+            if (event.code === 'Enter') {
+                this.quotes.unshift({
+                    quote: this.newQuote, author: 'Gabo'
+                })
+
+            }
+        }
+    }
 })
 
 app.mount('#myApp')
