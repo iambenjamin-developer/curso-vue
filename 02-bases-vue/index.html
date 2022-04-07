@@ -15,9 +15,9 @@
         <h1>Batman quotes</h1>
 
         <ul>
-            <li v-for="quote in quotes">
-                <span>{{quote.quote}}</span>
-                <blockquote> -{{quote.author}}</blockquote>
+            <li v-for="{quote, author} in quotes">
+                <span>{{ quote }}</span>
+                <blockquote>-{{ author }}</blockquote>
             </li>
         </ul>
 
