@@ -6,8 +6,12 @@ const app = Vue.createApp({
     // <p> {{ !true ? 'Activo' : 'Inactivo'}}</p>
     // <p>desde app.js</p>
     // `
-    methods: {},
-    watch: {}
+    data() {
+        return {
+            quote: 'Perro que ladra no muerde',
+            author: 'Martin Fierro'
+        }
+    }
 })
 
 app.mount('#myApp')

@@ -12,17 +12,13 @@
     <!-- Todo lo que esta dentro de este div funciona con Vue -->
     <div id="myApp">
 
-        <h1>Hola mundo</h1>
-        <p> {{ true ? 'Activo' : 'Inactivo' }}</p>
-        <p>desde index.html</p>
-        <p> {{ 1 + 3 }}</p>
 
-        <!-- renderiza un undefined -->
-        <p> {{ }}</p>
+        <p> {{ message }}</p>
+        <blockquote> {{ quote }}</blockquote>
+        <h5>{{author}}</h5>
+  
+
     </div>
-
-    <!-- Esta parte NO FUNCIONA con Vue, porque esta fuera del scope de myApp-->
-    <h5> {{ 1 + 1}}</h5>
 
 
     <script src="https://unpkg.com/vue@next"></script>
