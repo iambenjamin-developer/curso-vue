@@ -6,6 +6,8 @@ const app = Vue.createApp({
     // <p> {{ !true ? 'Activo' : 'Inactivo'}}</p>
     // <p>desde app.js</p>
     // `
+    methods: {},
+    watch: {}
 })
 
 app.mount('#myApp')
