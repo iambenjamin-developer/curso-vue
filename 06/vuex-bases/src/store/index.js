@@ -18,6 +18,11 @@ export default createStore({
       state.lastMutation = 'incrementFive'
 
     },
+    incrementByValue(state, value) {
+
+      state.count += Number(value)
+      state.lastMutation = 'incrementByValue'
+    },
 
   },
   actions: {
