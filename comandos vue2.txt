@@ -1,0 +1,22 @@
+Paso 1. Tener instalado y actualizado NodeJS, puedes conseguirlo aquí https://nodejs.org/es/download/
+
+Paso 2. Lazar el siguiente comando para instalar Vue Cli de forma global en nuestro sistema:
+
+npm install -g vue-cli
+
+Paso 3. Ahora simplemente lanzamos un comando para generar la estructura de ficheros y directorios básica:
+
+vue init webpack-simple nombre-del-proyecto
+
+Paso 4. Una vez que termines de seguir el asistente y al final entrar al directorio e instalar las dependencias:
+
+cd nombre-del-proyecto
+npm install
+
+Paso 5. Lanzar y ejecutar el proyecto con el comando:
+
+npm run dev
+
+Ahora se lanzará un servidor local y se ejecutará la webapp que ha generado Vue CLI en el navegador.
+
+Con esto ya sabemos como instalar VueJS 2 con esta herramienta 😉

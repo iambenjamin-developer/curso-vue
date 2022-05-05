@@ -3,9 +3,15 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     count: 1,
-    lastMutation: 'Ninguna'
+    lastMutation: 'Ninguna',
+    name: 'Benjamin',
+    lastName: 'Correa'
   },
   getters: {
+    getFullName(state) {
+
+      return `${state.lastName}, ${state.name}`
+    }
   },
   mutations: {
     incrementOne(state) {

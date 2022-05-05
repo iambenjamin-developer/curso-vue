@@ -1,6 +1,7 @@
 <template>
     <h1>Counter Vuex</h1>
     <h2>Acceso directo {{ $store.state.count }}</h2>
+    <h3>{{ $store.getters.getFullName }}</h3>
 
     <button @click="incrementarEnUno">+1</button>
     <button @click="incrementarEnCinco">+5</button>
