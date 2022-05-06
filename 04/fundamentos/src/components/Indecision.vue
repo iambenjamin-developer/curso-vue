@@ -1,6 +1,6 @@
 <template>
     <h1>Indecision</h1>
-    <img v-if="img" :src="img" alt="bg">
+    <img v-if="imgSrc" :src="imgSrc" alt="bg">
 
     <div class="bg-dark"></div>
 
@@ -8,9 +8,9 @@
 
         <input v-model="question" type="text" placeholder="Haceme una pregunta">
         <p>Recorda terminar con un signo de interrogación(?)</p>
-        <div>
+        <div v-if="isValidQuestion">
             <h2>{{ question }}</h2>
-            <h1> {{ answer }}</h1>
+            <h1> {{ answer === 'yes' ? 'Si!' : 'No' }}</h1>
         </div>
     </div>
 
@@ -23,8 +23,8 @@ export default {
         return {
             question: null,
             answer: null,
-            img: null,
-
+            imgSrc: null,
+            isValidQuestion: false
         }
     },
     methods: {
@@ -33,15 +33,18 @@ export default {
             const { answer, image } = await fetch('https://yesno.wtf/api').then(response => response.json())
 
             this.answer = answer;
-            this.img = image;
+            this.imgSrc = image;
         }
     },
     watch: {
         question(value, oldValue) {
             // console.log({ value, oldValue })
+
+            this.isValidQuestion = false;
             if (!value.includes('?'))
                 return
 
+            this.isValidQuestion = true;
             //realizar peticion http a https://yesno.wtf/#api
             this.getAnswer();
 
