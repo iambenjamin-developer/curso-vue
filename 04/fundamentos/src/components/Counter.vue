@@ -1,6 +1,6 @@
 <template>
 
-    <h2>Counter!!</h2>
+    <h2>{{ customTitleV3 }}</h2>
     <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
 
     <div>
@@ -12,6 +12,7 @@
 
 <script>
 export default {
+    props: ['title'],
     name: 'Contador',
     data() {
         return {
@@ -34,7 +35,20 @@ export default {
         getSquareCounterValue() {
             console.log("computed => getSquareCounterValue")
             return this.counter * this.counter
-        }
+        },
+        customTitle() {
+            return this.title || 'Titulo por defecto'
+        },
+        customTitleV2() {
+            if (this.title !== undefined) {
+                return this.title;
+            } else {
+                return 'Título por defecto';
+            }
+        },
+        customTitleV3() {
+            return this.title ? this.title : 'Título por defecto';
+        },
     }
 }
 </script>
