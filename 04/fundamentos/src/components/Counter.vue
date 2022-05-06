@@ -17,8 +17,11 @@ export default {
         title: String,
         start: {
             type: Number,
-            default: 7
+            default: 7,
             // required: true
+            validator(value) {
+                return value > -1;
+            }
         }
     },
     data() {
