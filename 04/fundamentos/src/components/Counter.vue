@@ -1,6 +1,6 @@
 <template>
 
-    <h2>{{ customTitleV3 }}</h2>
+    <h2>{{ customTitleV3 }}!</h2>
     <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
 
     <div>
