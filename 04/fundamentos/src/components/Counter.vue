@@ -15,7 +15,11 @@ export default {
     props:
     {
         title: String,
-        start: Number
+        start: {
+            type: Number,
+            default: 7
+            // required: true
+        }
     },
     data() {
         return {

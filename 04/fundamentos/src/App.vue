@@ -3,7 +3,7 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <!-- v-bind y : es lo mismo, y sirve para definir una expresion -->
   <!-- <Counter v-bind:start="15 + 15" /> -->
-    <Counter :start="10" />
+  <Counter title="Hola mundo" :start="1" />
 </template>
 
 <script>
