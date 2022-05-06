@@ -1,7 +1,9 @@
 <template>
 
   <img alt="Vue logo" src="./assets/logo.png">
-  <Counter start="15" />
+  <!-- v-bind y : es lo mismo, y sirve para definir una expresion -->
+  <!-- <Counter v-bind:start="15 + 15" /> -->
+    <Counter :start="10" />
 </template>
 
 <script>

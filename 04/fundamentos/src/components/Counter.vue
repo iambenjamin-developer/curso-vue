@@ -12,8 +12,11 @@
 
 <script>
 export default {
-    props: ['title', 'start'],
-    name: 'Contador',
+    props:
+    {
+        title: String,
+        start: Number
+    },
     data() {
         return {
             counter: this.start
