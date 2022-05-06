@@ -1,6 +1,6 @@
 <template>
     <h1>Indecision</h1>
-    <img src="https://via.placeholder.com/250" alt="bg">
+    <img v-if="img" :src="img" alt="bg">
 
     <div class="bg-dark"></div>
 
@@ -10,7 +10,7 @@
         <p>Recorda terminar con un signo de interrogación(?)</p>
         <div>
             <h2>{{ question }}</h2>
-            <h1>Si, no, ni</h1>
+            <h1> {{ answer }}</h1>
         </div>
     </div>
 
@@ -21,8 +21,19 @@ export default {
 
     data() {
         return {
-            question: null
+            question: null,
+            answer: null,
+            img: null,
 
+        }
+    },
+    methods: {
+        async getAnswer() {
+
+            const { answer, image } = await fetch('https://yesno.wtf/api').then(response => response.json())
+
+            this.answer = answer;
+            this.img = image;
         }
     },
     watch: {
@@ -31,7 +42,9 @@ export default {
             if (!value.includes('?'))
                 return
 
-            //realizar peticion http
+            //realizar peticion http a https://yesno.wtf/#api
+            this.getAnswer();
+
         }
     }
 }
