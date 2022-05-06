@@ -1,13 +1,18 @@
 <template>
 
-    <h2>Counter</h2>
-    <p> 10 </p>
+    <h2>Counter!!</h2>
+    <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
+
 </template>
 
 <script>
 export default {
-
-// name: 'Patito'
+    name: 'Contador',
+    data() {
+        return {
+            counter: 5
+        }
+    }
 }
 </script>
 
