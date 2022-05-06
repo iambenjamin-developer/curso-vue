@@ -12,11 +12,11 @@
 
 <script>
 export default {
-    props: ['title'],
+    props: ['title', 'start'],
     name: 'Contador',
     data() {
         return {
-            counter: 5
+            counter: this.start
         }
     },
     methods: {
@@ -25,7 +25,8 @@ export default {
             return this.counter * this.counter
         },
         increase() {
-            this.counter++;
+            // this.counter++;
+            this.counter = this.counter + 1;
         },
         decrease() {
             this.counter--;
