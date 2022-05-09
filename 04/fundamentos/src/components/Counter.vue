@@ -1,7 +1,7 @@
 <template>
 
-    <h2>{{ customTitleV3 }}!</h2>
-    <p> {{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
+    <h2>{{ customTitle }}!</h2>
+    <p> {{ counter }} <sup>2</sup> = {{ getSquareValue }}</p>
 
     <div>
         <button v-on:click="increase">+1</button>
