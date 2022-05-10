@@ -9,6 +9,9 @@ describe('Counter Component', () => {
         wrapper = shallowMount(Counter);
     });
 
+    // test('nombre', () =>{
+
+    // })
 
     // test('debe hacer match con el snapshot', () => {
 
@@ -65,5 +68,18 @@ describe('Counter Component', () => {
         let value = wrapper.find('[data-testid="counter"]').text();
 
         expect(value).toBe('101');
+    })
+
+
+    test('Props Debe estar de establecer el valor por defecto', () => {
+
+        const { start } = wrapper.props()
+        // const start = wrapper.props('start')
+        // console.log(typeof start)
+
+        const value = wrapper.find('[data-testid="counter"]').text();
+
+        expect(Number(value)).toBe(start)
+        // expect(value).toBe(start.toString())
     })
 })
