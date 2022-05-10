@@ -47,4 +47,18 @@ describe('Counter Component', () => {
         expect(value).toBe('100');
 
     })
+
+    test('Debe de incrementar en 1 el valor del contador', async () => {
+
+        const wrapper = shallowMount(Counter);
+
+        const increaseBtn = wrapper.find('button');
+
+        await increaseBtn.trigger('click');
+
+        const value = wrapper.find('[data-testid="counter"]').text();
+
+        expect(value).toBe('101');
+
+    })
 })
