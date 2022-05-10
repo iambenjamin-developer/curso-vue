@@ -1,7 +1,9 @@
+import Counter from '@/components/Counter.vue';
 <template>
 
     <h2>{{ customTitle }}!</h2>
     <p> {{ counter }} <sup>2</sup> = {{ getSquareValue }}</p>
+    <p>{{ counter }}</p>
 
     <div>
         <button v-on:click="increase">+1</button>
@@ -17,7 +19,7 @@ export default {
         title: String,
         start: {
             type: Number,
-            default: 7,
+            default: 100,
             // required: true
             validator(value) {
                 return value > -1;
