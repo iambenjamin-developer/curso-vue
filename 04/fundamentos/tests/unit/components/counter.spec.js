@@ -53,24 +53,19 @@ describe('Counter Component', () => {
         //incremento
         const wrapper = shallowMount(Counter);
 
-        const increaseBtn = wrapper.find('button');
+        const buttons = wrapper.findAll('button');
+        const increaseBtn = buttons[0];
+        const decreaseButton = buttons[1];
 
         await increaseBtn.trigger('click');
+        await increaseBtn.trigger('click');
+        await increaseBtn.trigger('click');
+
+        await decreaseButton.trigger('click');
+        await decreaseButton.trigger('click');
 
         let value = wrapper.find('[data-testid="counter"]').text();
 
         expect(value).toBe('101');
-
-
-        //decremento
-        const decreaseButton = wrapper.findAll('button')[1];
-
-        await decreaseButton.trigger('click');
-        await decreaseButton.trigger('click');
-
-        value = wrapper.find('[data-testid="counter"]').text();
-
-        expect(value).toBe('99');
-
     })
 })
