@@ -53,9 +53,7 @@ describe('Counter Component', () => {
         //incremento
         const wrapper = shallowMount(Counter);
 
-        const buttons = wrapper.findAll('button');
-        const increaseBtn = buttons[0];
-        const decreaseButton = buttons[1];
+        const [increaseBtn, decreaseButton] = wrapper.findAll('button');
 
         await increaseBtn.trigger('click');
         await increaseBtn.trigger('click');
