@@ -10,21 +10,21 @@ describe('Counter Component', () => {
     //     expect(wrapper.html()).toMatchSnapshot();
     // })
 
-    test('h2 debe de tener el valor por defecto "Titulo por defecto!"', () => {
+    // test('h2 debe de tener el valor por defecto "Titulo por defecto!"', () => {
 
-        const wrapper = shallowMount(Counter);
+    //     const wrapper = shallowMount(Counter);
 
-        expect(wrapper.find('h2').exists()).toBeTruthy();
+    //     expect(wrapper.find('h2').exists()).toBeTruthy();
 
-        // expect(wrapper.find('h20').exists()).toBe(true);
+    //     // expect(wrapper.find('h20').exists()).toBe(true);
 
-        const h2Value = wrapper.find('h2').text();
+    //     const h2Value = wrapper.find('h2').text();
 
-        expect(h2Value).toBe("Titulo por defecto!")
+    //     expect(h2Value).toBe("Titulo por defecto!")
 
-    })
+    // })
 
-    test('El valor por defecto debe de ser 100 en el <p>', () => {
+    test('El valor por defecto debe de ser 100 en el <p> (con findAll)', () => {
 
         //Wrapper
         const wrapper = shallowMount(Counter);
@@ -32,9 +32,19 @@ describe('Counter Component', () => {
         //pTags
         const pTags = wrapper.findAll('p');
 
-        console.log(pTags[0].text())
+        // console.log(pTags[0].text())
         //expect segundo p = 100
         expect(pTags[1].text()).toBe('100');
+
+    })
+
+    test('El valor por defecto debe de ser 100 en el <p> (con data attribute)', () => {
+
+        const wrapper = shallowMount(Counter);
+
+        const value = wrapper.find('[data-testid="counter"]').text();
+
+        expect(value).toBe('100');
 
     })
 })
