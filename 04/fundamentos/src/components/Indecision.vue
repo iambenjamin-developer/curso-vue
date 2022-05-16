@@ -1,102 +1,101 @@
 <template>
-    <h1>Indecision</h1>
-    <img v-if="imgSrc" :src="imgSrc" alt="bg">
+  <h1>Indecision</h1>
+  <img v-if="imgSrc" :src="imgSrc" alt="bg" />
 
-    <div class="bg-dark"></div>
+  <div class="bg-dark"></div>
 
-    <div class="indecision-container">
-
-        <input v-model="question" type="text" placeholder="Haceme una pregunta">
-        <p>Recorda terminar con un signo de interrogación(?)</p>
-        <div v-if="isValidQuestion">
-            <h2>{{ question }}</h2>
-            <h1> {{ answer }}</h1>
-        </div>
+  <div class="indecision-container">
+    <input v-model="question" type="text" placeholder="Haceme una pregunta" />
+    <p>Recorda terminar con un signo de interrogación(?)</p>
+    <div v-if="isValidQuestion">
+      <h2>{{ question }}</h2>
+      <h1>{{ answer }}</h1>
     </div>
-
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      question: null,
+      answer: null,
+      imgSrc: null,
+      isValidQuestion: false,
+    };
+  },
+  methods: {
+    async getAnswer() {
+      const { answer, image } = await fetch("https://yesno.wtf/api").then(
+        (response) => response.json()
+      );
 
-    data() {
-        return {
-            question: null,
-            answer: null,
-            imgSrc: null,
-            isValidQuestion: false
-        }
+      this.answer = answer === "yes" ? "Si!" : "No";
+      this.imgSrc = image;
     },
-    methods: {
-        async getAnswer() {
+  },
+  watch: {
+    question(value, oldValue) {
+      // console.log({ value, oldValue })
 
-            const { answer, image } = await fetch('https://yesno.wtf/api').then(response => response.json())
+      this.isValidQuestion = false;
 
-            this.answer = answer === 'yes' ? 'Si!' : 'No';
-            this.imgSrc = image;
-        }
+      console.log({ value });
+
+      if (!value.includes("?")) return;
+
+      this.isValidQuestion = true;
+      //realizar peticion http a https://yesno.wtf/#api
+      this.getAnswer();
     },
-    watch: {
-        question(value, oldValue) {
-            // console.log({ value, oldValue })
-
-            this.isValidQuestion = false;
-            if (!value.includes('?'))
-                return
-
-            this.isValidQuestion = true;
-            //realizar peticion http a https://yesno.wtf/#api
-            this.getAnswer();
-
-        }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
 img,
 .bg-dark {
-    height: 100vh;
-    left: 0px;
-    max-height: 100%;
-    max-width: 100%;
-    position: fixed;
-    top: 0px;
-    width: 100vw;
+  height: 100vh;
+  left: 0px;
+  max-height: 100%;
+  max-width: 100%;
+  position: fixed;
+  top: 0px;
+  width: 100vw;
 }
 
 .bg-dark {
-    background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .indecision-container {
-    position: relative;
-    z-index: 99;
+  position: relative;
+  z-index: 99;
 }
 
 input {
-    width: 250px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: none;
+  width: 250px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 p {
-    color: white;
-    font-size: 20px;
-    margin-top: 0px;
+  color: white;
+  font-size: 20px;
+  margin-top: 0px;
 }
 
 h1,
 h2 {
-    color: white;
+  color: white;
 }
 
 h2 {
-    margin-top: 150px;
+  margin-top: 150px;
 }
 </style>
