@@ -1,5 +1,6 @@
 import { shallowMount } from "@vue/test-utils";
 import Indecision from "@/components/Indecision.vue";
+import exp from "constants";
 
 describe('Indecision Component', () => {
 
@@ -72,8 +73,17 @@ describe('Indecision Component', () => {
         expect(wrapper.vm.answer).toBe('Si!');
     });
 
-    test('pruebas en getAnswer - Fallo en el API', () => {
+    test('pruebas en getAnswer - Fallo en el API', async () => {
 
+
+        fetch.mockImplementationOnce(() => Promise.reject('API is down'));
+
+        await wrapper.vm.getAnswer();
+
+        const img = wrapper.find('img');
+
+        expect(img.exists()).toBeFalsy();
+        expect(wrapper.vm.answer).toBe('El API no esta funcionando correctamente!');
     });
 
 });

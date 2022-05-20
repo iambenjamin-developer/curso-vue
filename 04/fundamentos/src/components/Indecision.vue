@@ -26,12 +26,19 @@ export default {
   },
   methods: {
     async getAnswer() {
-      const { answer, image } = await fetch("https://yesno.wtf/api").then(
-        (response) => response.json()
-      );
+      try {
+        this.answer = "Pensando...";
+        const { answer, image } = await fetch("https://yesno.wtf/api").then(
+          (response) => response.json()
+        );
 
-      this.answer = answer === "yes" ? "Si!" : "No";
-      this.imgSrc = image;
+        this.answer = answer === "yes" ? "Si!" : "No";
+        this.imgSrc = image;
+      } catch (error) {
+        console.log("IndecisionComponent", error);
+        this.answer = "El API no esta funcionando correctamente!";
+        this.img = null;
+      }
     },
   },
   watch: {
