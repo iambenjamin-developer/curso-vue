@@ -6,10 +6,22 @@ describe('Indecision Component', () => {
     let wrapper;
     let clgSpy;
 
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve(
+            {
+                answer: 'yes',
+                forced: false,
+                image: 'https://yesno.wtf/assets/yes/8-2f93962e2ab24427df8589131da01a4d.gif'
+            }
+        )
+    }));
+
     beforeEach(() => {
 
         wrapper = shallowMount(Indecision);
         clgSpy = jest.spyOn(console, 'log');
+
+        jest.clearAllMocks();
     });
 
 
@@ -34,9 +46,17 @@ describe('Indecision Component', () => {
         // console.log(wrapper.vm);
     });
 
-    test('al escribir el simbolo de interrogación "?", debemos disparar el fetch(console.log)"', () => {
+    test('al escribir el simbolo de interrogación "?", debemos disparar el getAnswer"', async () => {
 
+        const getAnswerSpy = jest.spyOn(wrapper.vm, 'getAnswer');
+
+        let input = wrapper.find('input');
+        await input.setValue('Lloverá el fin de semana?');
+
+        expect(clgSpy).toHaveBeenCalledTimes(1);
+        expect(getAnswerSpy).toHaveBeenCalledTimes(1);
     });
+
 
     test('pruebas en getAnswer', () => {
 
