@@ -58,8 +58,18 @@ describe('Indecision Component', () => {
     });
 
 
-    test('pruebas en getAnswer', () => {
+    test('pruebas en getAnswer', async () => {
 
+        await wrapper.vm.getAnswer();
+
+        // console.log(wrapper.vm.answer)
+        // console.log(wrapper.vm.imgSrc)
+
+        const img = wrapper.find('img');
+
+        expect(img.exists()).toBeTruthy();
+        expect(wrapper.vm.imgSrc).toBe('https://yesno.wtf/assets/yes/8-2f93962e2ab24427df8589131da01a4d.gif');
+        expect(wrapper.vm.answer).toBe('Si!');
     });
 
     test('pruebas en getAnswer - Fallo en el API', () => {
