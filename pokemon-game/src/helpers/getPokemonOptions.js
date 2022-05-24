@@ -10,8 +10,8 @@ const getPokemonsOptions = () => {
     getPokemonNames(mixPokemons.splice(0, 4));
 }
 
-const getPokemonNames = (pokemons = []) => {
+const getPokemonNames = ([a, b, c, d] = []) => {
 
-    console.log(pokemons);
+    console.log(a, b, c, d);
 }
 export default getPokemonsOptions;
