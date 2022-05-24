@@ -10,9 +10,9 @@
 <script>
 import PokemonPicture from "@/components/PokemonPicture.vue";
 import PokemonOptions from "@/components/PokemonOptions.vue";
-import getPokemonsOptions from "@/helpers/getPokemonOptions"
+import getPokemonsOptions from "@/helpers/getPokemonOptions";
 
-console.log(getPokemonsOptions());
+// console.log(getPokemonsOptions());
 export default {
   components: {
     PokemonPicture,
