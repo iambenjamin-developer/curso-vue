@@ -3,7 +3,7 @@
 
   <div v-else>
     <h1>Quien es este pokemon?</h1>
-    <PokemonPicture :pokemonId="pokemon.id" :showPokemon="true" />
+    <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
     <PokemonOptions :pokemons="pokemonArr" />
   </div>
 </template>
@@ -23,6 +23,7 @@ export default {
     return {
       pokemonArr: [],
       pokemon: null,
+      showPokemon: false,
     };
   },
   methods: {
