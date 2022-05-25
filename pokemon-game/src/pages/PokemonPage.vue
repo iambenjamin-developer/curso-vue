@@ -6,10 +6,10 @@
     <PokemonPicture :pokemon-id="pokemon.id" :show-pokemon="showPokemon" />
     <PokemonOptions :pokemons="pokemonArr" @select-pokemon="checkAnswer" />
 
-    <div v-if="showAnswer">
+    <template v-if="showAnswer">
       <h2 class="fade-in">{{ message }}</h2>
       <button @click="newGame">Nuevo Juego</button>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
         this.message = `Oops, era ${this.pokemon.name}`;
       }
 
-      console.log("SelectPokemon se ha llamado", selectedPokemonId);
+      // console.log("SelectPokemon se ha llamado", selectedPokemonId);
     },
     newGame() {
       this.pokemonArr = [];
