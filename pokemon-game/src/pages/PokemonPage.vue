@@ -5,6 +5,11 @@
     <h1>Quien es este pokemon?</h1>
     <PokemonPicture :pokemon-id="pokemon.id" :show-pokemon="showPokemon" />
     <PokemonOptions :pokemons="pokemonArr" @select-pokemon="checkAnswer" />
+
+    <div v-if="showAnswer">
+      <h2 class="fade-in">{{ message }}</h2>
+      <button>Nuevo Juego</button>
+    </div>
   </div>
 </template>
 
@@ -24,6 +29,8 @@ export default {
       pokemonArr: [],
       pokemon: null,
       showPokemon: false,
+      showAnswer: false,
+      message: "",
     };
   },
   methods: {
@@ -34,9 +41,16 @@ export default {
 
       this.pokemon = this.pokemonArr[rndInt];
     },
-    checkAnswer(pokemonId) {
-      this.showPokemon = true;
-      console.log("SelectPokemon se ha llamado", pokemonId);
+    checkAnswer(selectedPokemonId) {
+      this.showAnswer = true;
+      if (selectedPokemonId === this.pokemon.id) {
+        this.showPokemon = true;
+        this.message = `Correcto, ${this.pokemon.name}`;
+      } else {
+        this.message = `Oops, era ${this.pokemon.name}`;
+      }
+
+      console.log("SelectPokemon se ha llamado", selectedPokemonId);
     },
   },
   mounted() {
