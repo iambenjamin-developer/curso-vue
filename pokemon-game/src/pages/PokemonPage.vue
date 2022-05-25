@@ -8,7 +8,7 @@
 
     <div v-if="showAnswer">
       <h2 class="fade-in">{{ message }}</h2>
-      <button>Nuevo Juego</button>
+      <button @click="newGame">Nuevo Juego</button>
     </div>
   </div>
 </template>
@@ -51,6 +51,14 @@ export default {
       }
 
       console.log("SelectPokemon se ha llamado", selectedPokemonId);
+    },
+    newGame() {
+      this.pokemonArr = [];
+      this.pokemon = null;
+      this.showPokemon = false;
+      this.showAnswer = false;
+      this.message = "";
+      this.mixPokemonArray();
     },
   },
   mounted() {
