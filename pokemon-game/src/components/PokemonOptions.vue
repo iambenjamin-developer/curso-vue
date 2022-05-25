@@ -4,7 +4,7 @@
       <li
         v-for="pokemon in pokemons"
         :key="pokemon.id"
-        @click="$emit('selectPokemon')"
+        @click="$emit('selectPokemon', pokemon.id)"
       >
         {{ pokemon.name }}
       </li>
