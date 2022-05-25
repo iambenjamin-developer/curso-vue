@@ -4,7 +4,7 @@
   <div v-else>
     <h1>Quien es este pokemon?</h1>
     <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
-    <PokemonOptions :pokemons="pokemonArr" />
+    <PokemonOptions :pokemons="pokemonArr" @select-pokemon="checkAnswer" />
   </div>
 </template>
 
@@ -33,6 +33,9 @@ export default {
       const rndInt = Math.floor(Math.random() * 4);
 
       this.pokemon = this.pokemonArr[rndInt];
+    },
+    checkAnswer() {
+      console.log("SelectPokemon se ha llamado");
     },
   },
   mounted() {

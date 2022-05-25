@@ -1,7 +1,11 @@
 <template>
   <div class="options-container">
     <ul>
-      <li v-for="pokemon in pokemons" :key="pokemon.id">
+      <li
+        v-for="pokemon in pokemons"
+        :key="pokemon.id"
+        @click="$emit('selectPokemon')"
+      >
         {{ pokemon.name }}
       </li>
     </ul>
@@ -14,6 +18,11 @@ export default {
     pokemons: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    emitir() {
+      // this.$emit();
     },
   },
 };
